@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Aliments
+{% endblock %}
+
+{% block body %}
+	<h1 class="border border-primary rounded p-2 m-2 text-white bg-primary">
+		Liste Aliment
+		{% if isCalorie %}
+			avec mois de 50 calorie ou 100g
+		{% elseif  isGlucide %}
+			avec mois de 5 glucide  ou 100g
+
+		{% endif %}
+	</h1>
+	<a class="btn btn-primary m-2" href="{{path("app_aliment")}}">
+		Tous
+	</a>
+	<a class="btn btn-primary m-2 " href="{{path("app_alimentParCalorie",{"calorie":"50"})}}">Aliments avec mois de 50 calorie ou 100g
+	</a>
+	<a class="btn btn-primary m-2 " href="{{path("app_alimentParglucide",{"glucide":"5"})}}">Aliments avec mois de 5 glucide ou 100g
+	</a>
+
+	<div class="row">
+		{% for aliments in aliment %}
+			<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+				<div class="card border-primary mb-3 mx-auto" style="max-width:15rem">
+					<div class="card-header text-center">
+						<img src="{{asset('images/' ~ aliments.image )}}" class="person_aliment card-img-cover">
+
+					</div>
+
+					<div class="card-body">
+						<h3 class="card-title text-center pb-2 mx-3 border-bottom border-primary">
+							{{aliments.nom}}</h3>
+
+						<p class="card-text">
+							<h4 class="text-center">Prix(kilo) :
+								{{aliments.prix}}
+								DT</h4>
+							<table class="table text-center">
+								<tr class="table-primary">
+									<td>propriété</td>
+									<td>valeur en (100g)</td>
+								</tr>
+								<tr>
+									<td>calorie</td>
+									<td>{{aliments.calorie}}</td>
+								</tr>
+								<tr>
+									<td>Lipide</td>
+									<td>{{aliments.lipide}}</td>
+								</tr>
+								<tr>
+									<td>Glucide</td>
+									<td>{{aliments.glucide}}</td>
+								</tr>
+								<tr>
+									<td>Protaine</td>
+									<td>{{aliments.protaine}}</td>
+								</tr>
+
+							</table>
+
+						</p>
+					</div>
+				</div>
+
+
+			</div>
+
+
+		{% endfor %}
+
+	</div>
+{% endblock %}

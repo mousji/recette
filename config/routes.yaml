@@ -1,3 +1,17 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+
+app_aliment:
+    path: /aliment
+    controller: App\Controller\AlimentController::aliment
+
+
+app_alimentParCalorie:
+    path: /aliment/calorie/{calorie}
+    controller: App\Controller\AlimentController::alimentparcalorie
+
+app_alimentParglucide:
+    path: /aliment/glucide/{glucide}
+    controller: App\Controller\AlimentController::alimentparglucide
